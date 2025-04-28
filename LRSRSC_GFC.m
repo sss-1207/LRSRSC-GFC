@@ -4,14 +4,14 @@ function [Z,E,A,J,W,obj]=LRSRSC_GFC(X, D, lambda, alpha, beta, WW, M)
 % in the paper entitled "Low-rank Sparse Representation Subspace Clustering Algorithm
 % with Gaussian Fuzzy Constraint".
 %------------------------------
-% min ｦｵ(ｦﾒi(Z))+alpha*|M.*Z|_1+lambda*|E|_2,1+ beta*|ZGZ^T|_F^2
+% min ﾂｦﾂｵ(ﾂｦﾃ段(Z))+alpha*|M.*Z|_1+lambda*|E|_2,1+ beta*|ZGZ^T|_F^2
 % s.t., X = X*Z + E,Z>=0
 %         ||
 %         ||
 %         ||
-%ｦｵ(ｦﾒi(Z)) = \sum_{i=1^n exp(?ｦﾒi(Z)) }
+%ﾂｦﾂｵ(ﾂｦﾃ段(Z)) = \sum_{i=1^n exp(?ﾂｦﾃ段(Z)) }
 %--------------------------------
-% min min ｦｵ(ｦﾒi(A))+alpha*|M.*J|_1+lambda*|E|_2,1+ beta*|WGW^T|_F^2
+% min min ﾂｦﾂｵ(ﾂｦﾃ段(A))+alpha*|M.*J|_1+lambda*|E|_2,1+ beta*|WGW^T|_F^2
 % s.t. X = X*Z + E
 %      Z = A
 %      Z = J
@@ -114,11 +114,6 @@ function x = prox_l1(b,lambda)
 % The proximal operator of the l1 norm
 % 
 % min_x lambda*||x||_1+0.5*||x-b||_2^2
-%
-% version 1.0 - 18/06/2016
-%
-% Written by Canyi Lu (canyilu@gmail.com)
-% 
 
 x = max(0,b-lambda)+min(0,b+lambda);
 
@@ -128,11 +123,6 @@ function X = prox_l21(B,lambda)
 % l21 norm is the sum of the l2 norm of all columns of a matrix 
 %
 % min_X lambda*||X||_{2,1}+0.5*||X-B||_2^2
-%
-% version 1.0 - 18/06/2016
-%
-% Written by Canyi Lu (canyilu@gmail.com)
-%
 
 X = zeros(size(B));
 for i = 1 : size(X,2)
